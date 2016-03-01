@@ -15,6 +15,11 @@ class AlphabetController < UIViewController
     @table.delegate = self
 
     @data = ['','Harry','Sophia','Sam']
+
+    #Motion::Layout.new do |layout|
+    #  layout.view view
+
+    #end
     
   end
 
