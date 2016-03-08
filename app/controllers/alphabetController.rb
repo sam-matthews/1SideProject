@@ -14,6 +14,7 @@ class AlphabetController < UIViewController
     @table.dataSource = self
     @table.delegate = self
 
+    # Add changes to array so I add names directly from the app.
     @data = ['','Harry','Sophia','Sam']
     @value = ['','10','15','100']
     
