@@ -15,11 +15,7 @@ class AlphabetController < UIViewController
     @table.delegate = self
 
     @data = ['','Harry','Sophia','Sam']
-
-    #Motion::Layout.new do |layout|
-    #  layout.view view
-
-    #end
+    @value = ['','10','15','100']
     
   end
 
@@ -27,12 +23,18 @@ class AlphabetController < UIViewController
     @reuseIdentifier ||= "CELL_IDENTIFIER"
 
     cell = tableView.dequeueReusableCellWithIdentifier(@reuseIdentifier) || begin
-      UITableViewCell.alloc.initWithStyle(UITableViewCellStyleDefault, reuseIdentifier:@reuseIdentifier)
+      # UITableViewCell.alloc.initWithStyle(UITableViewCellStyleDefault, reuseIdentifier:@reuseIdentifier)
+      UITableViewCell.alloc.initWithStyle(UITableViewCellStyleValue1, reuseIdentifier:@reuseIdentifier)
     end
 
 
     # put your data in the cell
     cell.textLabel.text = @data[indexPath.row]
+
+    if cell.textLabel.text != ''
+      cell.detailTextLabel.text = @value[indexPath.row]  
+    end
+    
     cell
   end
 
@@ -46,8 +48,8 @@ class AlphabetController < UIViewController
     tableView.deselectRowAtIndexPath(indexPath, animated: true)
 
     alert = UIAlertView.alloc.init
-    alert.message = "You tapped #{@data[indexPath.row]} Sam!"
-    alert.addButtonWithTitle "Oh No"
+    alert.message = "#{@data[indexPath.row]} has #{@value[indexPath.row]} points."
+    alert.addButtonWithTitle "OK"
     alert.show
   end
 end
